@@ -1,32 +1,26 @@
-import React,{useState} from  'react';
-import './App.css'
+import React,{useState} from 'react';
+import Tweetlist from './components/Tweetlist';
+import Create from './components/Create';
+
 
 function App() {
-
-  const[count , setCount]= useState(0)
-
-  const increment = ()=>{
-    setCount(count+1)
-  };
-
-  const decrement = ()=>{
-    if(count <=0){
-      alert("will not go backwards any more")
-      return
-    }else{
-      setCount(count-1)
-    }
+   const [name,setName]=useState('Raihan')
+   const [textInput , setText]=useState("")
+  const [tweet , setTweet]=useState([])
    
-  }
-
-  return(
-    <div className='app'>
-      <button onClick={increment}>increment</button>
-      <h1>{count}</h1>
-      <button onClick={decrement}> decrement </button>
-    </div>
-  );
-
+    return(
+     <div>
+        
+        <Create textInput={textInput}
+        setText={setText}
+        tweet={tweet}
+        setTweet={setTweet}
+        />
+        <Tweetlist setTweet={setTweet} name = {name} tweets={tweet}/>
+       
+     </div>
+    )
 }
+
 
 export default App
